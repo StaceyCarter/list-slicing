@@ -81,7 +81,7 @@ def custom_extend(input_list, second_list):
 
     """
 
-    pass
+    input_list += second_list
 
 
 def custom_insert(input_list, index, value):
@@ -98,8 +98,10 @@ def custom_insert(input_list, index, value):
         True
 
     """
-
-    pass
+    # print(input_list)
+    # input_list = input_list[:index] + [value] + input_list[index:] 
+    input_list[:index] += [value]
+    # print(input_list)
 
 
 def custom_remove(input_list, value):
@@ -118,10 +120,14 @@ def custom_remove(input_list, value):
 
     """
 
-    pass
+    for i in range(custom_len(input_list)):
+        if input_list[i] == value:
+            input_list[i:i+1] = []
+            break
 
 
-def custom_pop(input_list):
+
+def custom_pop(input_list): 
     """Remove the last item in the list and returns it.
 
     The function custom_pop(input_list) should have the same functionality
@@ -136,8 +142,10 @@ def custom_pop(input_list):
         ['Jan', 'Feb']
 
     """
+    last_elem = input_list[-1]
+    input_list[-1:] = []
+    return last_elem
 
-    return None
 
 
 def custom_index(input_list, value):
@@ -153,7 +161,10 @@ def custom_index(input_list, value):
 
     """
 
-    return 0
+    for i in range(custom_len(input_list)):
+        if input_list[i] == value:
+            return i
+    
 
 
 def custom_count(input_list, value):
@@ -168,8 +179,11 @@ def custom_count(input_list, value):
         2
 
     """
-
-    return 0
+    num_times = 0
+    for elem in input_list:
+        if elem == value:
+            num_times+=1
+    return num_times
 
 
 def custom_reverse(input_list):
@@ -187,8 +201,8 @@ def custom_reverse(input_list):
         True
 
     """
-
-    pass
+    
+    input_list[:] = input_list[::-1]
 
 
 def custom_contains(input_list, value):
@@ -207,8 +221,12 @@ def custom_contains(input_list, value):
         True
 
     """
-
-    return None
+    does_it_exist = False
+    for elem in input_list:
+        if elem == value:
+            does_it_exist = True
+    return does_it_exist
+    
 
 
 def custom_equality(some_list, another_list):
@@ -226,8 +244,12 @@ def custom_equality(some_list, another_list):
         False
 
     """
+    is_equal = True
+    for i in range(custom_len(some_list)):
+        if some_list[i] != another_list[i]:
+            is_equal = False
+    return is_equal
 
-    return None
 
 
 ##############################################################################
